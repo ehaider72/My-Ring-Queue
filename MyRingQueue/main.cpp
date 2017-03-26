@@ -64,23 +64,33 @@ public:
 		}
 
 		iterator& operator++(){
-			// Replace the line(s) below with your code.
+			++offset; 
+
 			return *this;
 		}
 
 		iterator operator++(int unused){
-			// Replace the line(s) below with your code.
-			return *this;
+			++*it;
+			return it;
 		}
 
 		bool operator==(const iterator& rhs) const {
-			// Replace the line(s) below with your code.
-			return true;
+			if ((rhs.offset == this.offset) && (rhs.parent != this.parent))
+			{	return true; }
+			else{
+				return false;
+			}
 		}
 
 		bool operator!=(const iterator& rhs) const {
-			// Replace the line(s) below with your code.
-			return true;
+			if ((rhs.offset != this.offset) || (rhs.parent != this.parent))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 	};
@@ -182,8 +192,8 @@ public:
 	}
 
 	// Miscellaneous functions
-	size_t size() const {
-		// Replace the line(s) below with your code.
+	size_t size() const { //ignoring rights looping ability, ring has MAX_SIZE actual slots
+		return MAX_SIZE;
 		return 0;
 	}
 
@@ -235,6 +245,9 @@ int main(){
 
 
 	rq.dump_queue();
+
+	std::cin.get();
+	std::cin.get();
 
 	return 0;
 }
